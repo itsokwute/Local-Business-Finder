@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Research local businesses and verify website opportunities."><title>Website Lead Finder | Nova Agentic</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
+<body><header><div class="wrap brand"><span class="mark" aria-hidden="true">N</span> Nova Agentic <a class="workspace" href="#lead-title">Saved Prospects</a></div></header>
+<main class="wrap">
+<section class="hero" aria-labelledby="hero-title">
+<div class="hero-grid">
+<div class="hero-copy">
+<p class="eyebrow">For Freelance Web Designers</p>
+<h1 id="hero-title">Find Local Businesses That May Need a Website</h1>
+<p class="hero-description">Enter a ZIP code to find businesses with a Google rating of 4.0 or higher and no website link on their listing.</p>
+<form id="search">
+<div class="hero-fields">
+<label>U.S. ZIP Code<input name="zip" inputmode="numeric" pattern="[0-9]{5}" required maxlength="5" placeholder="87114" autocomplete="postal-code"></label>
+<label>Business Category (Optional)<input name="category" maxlength="80" placeholder="e.g., Barber shops"></label>
+</div>
+<button id="run-search">Find Website Leads</button>
+<details id="provider"><summary>Outscraper API Setup</summary>
+<label>API Key<input name="apiKey" type="password" autocomplete="off" maxlength="250"></label>
+<p class="hero-hint">Get your API key from your <a href="https://app.outscraper.com/" target="_blank" rel="noopener noreferrer">Outscraper account</a>. After a successful search, your key is saved in this browser. Use this on a trusted device. Each search may use provider quota or incur charges.</p>
+<button id="forget-key" type="button" class="secondary" hidden>Forget Saved Key</button><p id="key-status" class="hero-hint" role="status"></p></details>
+<p id="search-status" role="status" class="hero-hint"></p>
+</form>
+</div>
+<aside class="hero-preview" aria-labelledby="preview-title">
+<h2 id="preview-title">What Your Search Returns</h2>
+<ul class="checks">
+<li>Businesses in your exact ZIP code with a Google rating of 4.0 or higher.</li>
+<li>Listings with no website link, plus business names, street addresses, and available public contact details.</li>
+<li>Results are limited to listings the search provider returns.</li>
+</ul>
+</aside>
+</div>
+</section>
+<section id="lead-results" class="panel" aria-labelledby="results-title" hidden>
+<h2 id="results-title" tabindex="-1">Matching Businesses</h2>
+<p id="result-summary" class="hint"></p>
+<dl id="result-stats" aria-label="Search Result Statistics"></dl>
+<div class="links">
+<label>Sort Results<select id="result-sort"><option value="priority">Most Actionable</option><option value="reviews">Most Reviews</option><option value="rating">Highest Rating</option></select></label>
+<button type="button" class="secondary" id="clear-results-filter">Clear Filters</button>
+<button type="button" class="secondary" id="search-more">Search More Categories</button>
+</div>
+<p id="more-status" class="hint" role="status">A follow-up search may use additional Outscraper quota.</p>
+<p id="visible-count" class="hint" role="status"></p>
+<p id="save-status" class="hint" role="status"></p>
+<div id="result-list"></div>
+</section>
+<section class="panel leads" aria-labelledby="lead-title"><div class="bar"><div><h2 id="lead-title">Saved Prospects</h2><p class="hint">Saved in this browser. Add business contact details you can verify independently.</p></div><div class="links"><button id="export" class="secondary">Export CSV</button><button id="add">+ Add Prospect</button></div></div>
+<div class="filters"><label>Find a Prospect<input id="query" type="search" placeholder="Search name, city or category"></label><label>Website Status<select id="filter"><option value="">All statuses</option><option>Needs verification</option><option>No website found</option><option>Website found</option><option>Working</option><option>Broken or redirected</option><option>Social page only</option></select></label></div>
+<div id="results" aria-live="polite"></div></section>
+</main><footer class="wrap">Designed by Nova Agentic</footer>
+<dialog id="dialog"><form id="lead"><div class="bar"><h2 id="dialog-title">Add Prospect</h2><button type="button" id="close" class="secondary" aria-label="Close">×</button></div><div class="fields">
+<label>Business Name<input name="name" required maxlength="150"></label><label>Category<input name="category" maxlength="100"></label>
+<label>City and State<input name="city" required maxlength="100"></label><label>Street Address<input name="address" maxlength="250"></label>
+<label>Business Phone<input name="phone" type="tel" maxlength="50"></label><label>Public Business Email<input name="email" type="email" maxlength="150"></label>
+<label>Google Rating (4.0–5.0)<input name="rating" type="number" min="4" max="5" step="0.1" required></label><label>Review Count<input name="reviews" type="number" min="1" max="10000000"></label>
+<label>Website Status<select name="status"><option>Needs verification</option><option>No website found</option><option>Website found</option><option>Working</option><option>Broken or redirected</option><option>Social page only</option></select></label>
+<label>Outreach Stage<select name="stage"><option>Researching</option><option>Ready to contact</option><option>Contacted</option><option>Replied</option><option>Closed</option></select></label>
+<label class="full">Website URL<input name="website" type="url" placeholder="https://example.com" maxlength="500"></label>
+<label class="full">Research Notes<textarea name="notes" rows="3" maxlength="2000" placeholder="Where you checked, when you checked, and what you found"></textarea></label>
+</div><p class="hint">Choose “No website found” after checking the Google listing and searching the exact business name with its city.</p><p id="form-error" role="alert"></p><div class="bar"><button type="button" id="remove" class="secondary" hidden>Delete Prospect</button><button class="save">Save Prospect</button></div></form></dialog>
+</body></html>

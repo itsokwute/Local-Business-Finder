@@ -1,0 +1,5 @@
+{
+  "framework": null,
+  "buildCommand": "node --check web/app.js && node --check api/search.mjs",
+  "outputDirectory": "web"
+}
